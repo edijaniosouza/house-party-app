@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:house_party/pages/home/home_page.dart';
 
 class HouseParty extends StatelessWidget {
   // This widget is the root of your application.
@@ -6,10 +7,7 @@ class HouseParty extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'House Party',
-      home: Scaffold(
-        appBar: AppBar(),
-        body: Container(),
-      ),
+      home: HomePage()
     );
   }
 }
