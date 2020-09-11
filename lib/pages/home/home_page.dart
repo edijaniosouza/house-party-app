@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:house_party/house_party_icons.dart';
+import 'package:house_party/components/bottom_bar_for_login.dart';
+import 'package:house_party/components/outlined_text.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -16,31 +17,17 @@ class _HomePageState extends State<HomePage> {
       ),
       
       body: Column(
+        // Centraliza o conteudo da tela
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Text(
-            'HOUSE\nPARTY',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              shadows: [
-                Shadow(
-                  blurRadius: 5.0,
-                  color: Colors.orange[900],
-                  offset: Offset(1, 1),
-                ),
-                Shadow(
-                  blurRadius: 5.0,
-                  color: Colors.orange[900],
-                  offset: Offset(1, 1),
-                ),
-              ],
-              fontSize: 55,
-              color: Colors.white,
-              fontFamily: 'BarlowSemiCondensed'
-            ),
+          // Texto da tela com contorno
+          OutlinedText(
+            'House\nParty',
+            fontSize: 55,
+            outlineColor: Colors.orange[900],
           ),
+
           Image(
             image: AssetImage('assets/images/caneca_baloes-vetor.png'),
             height: 350,
@@ -49,43 +36,8 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
 
-      bottomNavigationBar: BottomAppBar(
-        color: Colors.orange[300],
-        child: Container(
-          height: 65,
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  IconButton(
-                    tooltip: 'Acessar tela de login',
-                    icon: Icon(HousePartyIcons.sign_in),
-                    onPressed: () {},
-                  ),
-                  Text(
-                    'Entrar',
-                  )
-                ],
-              ),
-              Column(
-                children: [
-                  IconButton(
-                    tooltip: 'Criar uma nova conta',
-                    icon: Icon(HousePartyIcons.pencil),
-                    onPressed: () {},
-                  ),
-                  Text(
-                    'Cadastrar',
-                  )
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
+      // Barra inferior para acesso ao login ou cadastro
+      bottomNavigationBar: BottomBarForLogin(),
     );
   }
 }
