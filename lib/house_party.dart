@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:house_party/pages/home/home_page.dart';
+import 'package:house_party/pages/login/login_page.dart';
 
 class HouseParty extends StatelessWidget {
   // This widget is the root of your application.
@@ -7,7 +8,13 @@ class HouseParty extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'House Party',
-      home: HomePage()
+
+      // Nomeia rotas
+      routes: {
+        '/' : (context) => HomePage(),
+        '/login': (context) => LoginPage(),
+        // '/cadastro' : (context) => ,
+      }
     );
   }
 }
