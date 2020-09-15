@@ -52,6 +52,19 @@ class  LoginPageState extends State<LoginPage> {
 
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  child: SizedBox(
+                    width: constraints.maxWidth,
+                    height: 48,
+                    child: RaisedButton(
+                      child: Text('Entrar'),
+                      onPressed: () {
+                      },
+                    ),
+                  ),
+                ),
+
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
                   child: ButtonWithImage('Conctar usando o Google', 'assets/images/google-account.png')
                 ),
 
