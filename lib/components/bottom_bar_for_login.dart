@@ -42,11 +42,26 @@ class BottomBarForLogin extends StatelessWidget {
               children: [
                 IconButton(
                   tooltip: 'Criar uma nova conta',
-                  icon: Icon(HousePartyIcons.pencil),
+                  icon: Icon(HousePartyIcons.sign_in),
                   onPressed: () {},
                 ),
                 Text(
                   'Cadastrar',
+                )
+              ],
+            ),
+            // Inclui o botão de acesso a tela de Empresas
+            Column(
+              children: [
+                IconButton(
+                  tooltip: 'Cadastre sua Empresa',
+                  icon: Icon(HousePartyIcons.pencil),
+                  onPressed: () {
+                    HomeController.navigateToEmpresaPage(context);
+                  },
+                ),
+                Text(
+                  'Empresas',
                 )
               ],
             ),
