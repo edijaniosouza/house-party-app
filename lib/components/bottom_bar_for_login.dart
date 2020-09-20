@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:house_party/controller/home_controller.dart';
-import 'package:house_party/house_party_icons.dart';
+import 'package:house_party/pages/home/home_controller.dart';
+import 'package:house_party/components/house_party_icons.dart';
 
 // Constrói uma barra inferior que permite acessar a tela de login ou cadastro
 class BottomBarForLogin extends StatelessWidget {
