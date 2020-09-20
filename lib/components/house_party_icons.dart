@@ -12,6 +12,10 @@
 ///       - asset: fonts/HousePartyIcons.ttf
 ///
 /// 
+/// * Font Awesome 4, Copyright (C) 2016 by Dave Gandy
+///         Author:    Dave Gandy
+///         License:   SIL ()
+///         Homepage:  http://fortawesome.github.com/Font-Awesome/
 /// * Octicons, Copyright (C) 2020 by GitHub Inc.
 ///         Author:    GitHub
 ///         License:   MIT (http://opensource.org/licenses/mit-license.php)
@@ -25,6 +29,7 @@ class HousePartyIcons {
   static const _kFontFam = 'HousePartyIcons';
   static const _kFontPkg = null;
 
+  static const IconData building = IconData(0xf0f7, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData pencil = IconData(0xf330, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData sign_out = IconData(0xf339, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData sign_in = IconData(0xf365, fontFamily: _kFontFam, fontPackage: _kFontPkg);

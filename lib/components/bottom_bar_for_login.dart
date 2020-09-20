@@ -42,7 +42,7 @@ class BottomBarForLogin extends StatelessWidget {
               children: [
                 IconButton(
                   tooltip: 'Criar uma nova conta',
-                  icon: Icon(HousePartyIcons.sign_in),
+                  icon: Icon(HousePartyIcons.pencil),
                   onPressed: () {},
                 ),
                 Text(
@@ -55,7 +55,7 @@ class BottomBarForLogin extends StatelessWidget {
               children: [
                 IconButton(
                   tooltip: 'Cadastre sua Empresa',
-                  icon: Icon(HousePartyIcons.pencil),
+                  icon: Icon(HousePartyIcons.building),
                   onPressed: () {
                     HomeController.navigateToEmpresaPage(context);
                   },
