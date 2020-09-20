@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:house_party/components/bottom_bar_for_login.dart';
 import 'package:house_party/components/outlined_text.dart';
-import 'package:house_party/house_party.dart';
+
 
 class EmpresaPage extends StatefulWidget {
   @override
@@ -36,7 +35,7 @@ class _EmpresaPageState extends State<EmpresaPage> {
         //],
         
       ),
-
+      
       // Barra inferior para acesso ao login ou cadastro
       //bottomNavigationBar: BottomBarForLogin();
     );
