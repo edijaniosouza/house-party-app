@@ -12,7 +12,7 @@ class HouseParty extends StatelessWidget {
 
       // Nomeia rotas
       routes: {
-        '/empresa' : (context) => EmpresaPage(),
+        '/empresa' : (context) => CompanyPage(),
         '/' : (context) => HomePage(),
         '/login': (context) => LoginPage(),
         // '/cadastro' : (context) => ,
