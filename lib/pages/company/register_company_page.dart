@@ -93,35 +93,11 @@ class  RegisterCompanyPageState extends State<RegisterCompanyPage> {
                     ),
                   ),
                 ),
-
-                
-
-                
-
               ],
             ),
           ),
         )
       ),
-      
-      //body: Column(
-        // Centraliza o conteudo da tela
-        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        //crossAxisAlignment: CrossAxisAlignment.stretch,
-          // Texto da tela com contorno
-          //OutlinedText(
-          //  'House\nParty',
-          //  fontSize: 55,
-          //  outlineColor: Colors.orange[900],
-          //),
-        //],
-        
-      //),
-       
-      // Barra inferior para acesso ao login ou cadastro
-      //bottomNavigationBar: BottomBarForLogin();
-
-    
 
     );
   }
