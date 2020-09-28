@@ -5,7 +5,8 @@ class HomeController {
   static void navigateToLoginPage(BuildContext context) {
     Navigator.pushNamed(context, '/login');
   }
-  static void navigateToEmpresaPage(BuildContext context) {
-    Navigator.pushNamed(context, '/empresa');
+
+  static void navigateToRegisterCompanyPage(BuildContext context) {
+    Navigator.pushNamed(context, '/company/register');
   }
 }

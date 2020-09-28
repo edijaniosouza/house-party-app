@@ -57,7 +57,7 @@ class BottomBarForLogin extends StatelessWidget {
                   tooltip: 'Cadastre sua Empresa',
                   icon: Icon(HousePartyIcons.building),
                   onPressed: () {
-                    HomeController.navigateToEmpresaPage(context);
+                    HomeController.navigateToRegisterCompanyPage(context);
                   },
                 ),
                 Text(

@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:house_party/components/outlined_text.dart';
 import 'package:house_party/components/input_text.dart';
-import 'package:house_party/pages/empresa/empresa_controller.dart';
+import 'package:house_party/pages/company/register_company_controller.dart';
 
-class CompanyPage extends StatefulWidget{
-  final CompanyController companyController = CompanyController();
+class RegisterCompanyPage extends StatefulWidget{
+  final RegisterCompanyController companyController = RegisterCompanyController();
 
   @override
-  CompanyPageState createState() => CompanyPageState();
+  RegisterCompanyPageState createState() => RegisterCompanyPageState();
 }
 
-class  CompanyPageState extends State<CompanyPage> {
+class  RegisterCompanyPageState extends State<RegisterCompanyPage> {
   get backgroundColor => null;
 
   @override
@@ -36,16 +36,18 @@ class  CompanyPageState extends State<CompanyPage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
 
-            Padding(
-              padding: const EdgeInsets.only(bottom: 20.0),
-              child:Text(
-                'Dados da Empresa', textScaleFactor: 2,
-                ),),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 20.0),
+                  child: Text(
+                    'Dados da Empresa',
+                    textScaleFactor: 2,
+                  ),
+                ),
                 
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8.0),
                   child: InputText(
-                    widget.companyController.companyTextController,
+                    widget.companyController.nameInputController,
                     label: 'Nome da Empresa',
                     hint: 'Nome Fantasia',
                   )
@@ -54,16 +56,17 @@ class  CompanyPageState extends State<CompanyPage> {
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8.0),
                   child: InputText(
-                    widget.companyController.companyTextController,
+                    widget.companyController.phoneNumberInputController,
                     label: 'Telefone da Empresa',
                     hint: 'Para possíveis contatos',
+                    keyboardType: TextInputType.number,
                   )
                 ),
 
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8.0),
                   child: InputText(
-                    widget.companyController.companyTextController,
+                    widget.companyController.cnpjInputController,
                     label: 'CNPJ',
                     hint: 'Com pontos, traços e "/"',
                   )
@@ -72,7 +75,7 @@ class  CompanyPageState extends State<CompanyPage> {
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8.0),
                   child: InputText(
-                    widget.companyController.companyTextController,
+                    widget.companyController.eventsInputController,
                     label: 'Eventos que atende',
                     hint: 'Separar com vírgulas',
                   )
