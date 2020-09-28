@@ -50,21 +50,6 @@ class BottomBarForLogin extends StatelessWidget {
                 )
               ],
             ),
-            // Inclui o botão de acesso a tela de Empresas
-            Column(
-              children: [
-                IconButton(
-                  tooltip: 'Cadastre sua Empresa',
-                  icon: Icon(HousePartyIcons.building),
-                  onPressed: () {
-                    HomeController.navigateToRegisterCompanyPage(context);
-                  },
-                ),
-                Text(
-                  'Empresas',
-                )
-              ],
-            ),
           ],
         ),
       ),
