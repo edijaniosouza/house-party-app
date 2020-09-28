@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:house_party/pages/home/home_page.dart';
 import 'package:house_party/pages/login/login_page.dart';
+import 'package:house_party/pages/company/register_company_page.dart';
 
 class HouseParty extends StatelessWidget {
   // This widget is the root of your application.
@@ -13,7 +14,7 @@ class HouseParty extends StatelessWidget {
       routes: {
         '/' : (context) => HomePage(),
         '/login': (context) => LoginPage(),
-        // '/cadastro' : (context) => ,
+        '/company/register' : (context) => RegisterCompanyPage(),
       }
     );
   }
