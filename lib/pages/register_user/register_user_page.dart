@@ -18,7 +18,6 @@ class _RegisterUserPageState extends State<RegisterUserPage> {
     return Scaffold(
 
       appBar: AppBar(
-        backgroundColor: Colors.orange[300],
         centerTitle: true,
         title: OutlinedText(
           'House Party',

@@ -17,7 +17,14 @@ class HouseParty extends StatelessWidget {
         '/user/login': (context) => UserLoginPage(),
         '/user/register' : (context) => RegisterUserPage(),
         '/company/register' : (context) => RegisterCompanyPage(),
-      }
+      },
+
+      theme: ThemeData(
+        appBarTheme: AppBarTheme(
+          color: Colors.orange[300],
+          centerTitle: true,
+        )
+      ),
     );
   }
 }
