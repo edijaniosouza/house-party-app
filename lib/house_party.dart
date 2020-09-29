@@ -23,7 +23,9 @@ class HouseParty extends StatelessWidget {
         appBarTheme: AppBarTheme(
           color: Colors.orange[300],
           centerTitle: true,
-        )
+        ),
+
+        buttonColor: Colors.orange[300],
       ),
     );
   }
