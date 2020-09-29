@@ -9,11 +9,11 @@ class HomeController {
   static get getInstace => _instance;
 
   void navigateToLoginPage(BuildContext context) {
-    Navigator.pushNamed(context, '/login');
+    Navigator.pushNamed(context, '/user/login');
   }
 
   void navigateToRegisterPage(BuildContext context) {
-    Navigator.pushNamed(context, '/register');
+    Navigator.pushNamed(context, '/user/register');
   }
 
 }
