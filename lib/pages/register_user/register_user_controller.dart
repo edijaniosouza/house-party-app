@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class RegisterController {
+class RegisterUserController {
   
-  static RegisterController _instance = RegisterController._();
+  static RegisterUserController _instance = RegisterUserController._();
   TextEditingController nameInputController = TextEditingController();
   TextEditingController surnameInputController = TextEditingController();
   TextEditingController emailInputController = TextEditingController();
@@ -15,7 +15,7 @@ class RegisterController {
   String city;
   DateTime _birthday;
 
-  RegisterController._();
+  RegisterUserController._();
 
   get getBirthday => this._birthday;
   void setBirthday(DateTime birthday) {

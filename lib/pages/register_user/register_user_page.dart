@@ -3,15 +3,15 @@ import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 import 'package:house_party/components/input_text.dart';
 import 'package:house_party/components/outlined_text.dart';
-import 'package:house_party/pages/register/register_user_controller.dart';
+import 'package:house_party/pages/register_user/register_user_controller.dart';
 
-class RegisterPage extends StatefulWidget {
+class RegisterUserPage extends StatefulWidget {
   @override
-  _RegisterPageState createState() => _RegisterPageState();
+  _RegisterUserPageState createState() => _RegisterUserPageState();
 }
 
-class _RegisterPageState extends State<RegisterPage> {
-  RegisterController _registerController = RegisterController.getInstance;
+class _RegisterUserPageState extends State<RegisterUserPage> {
+  RegisterUserController _registerController = RegisterUserController.getInstance;
   
   @override
   Widget build(BuildContext context) {

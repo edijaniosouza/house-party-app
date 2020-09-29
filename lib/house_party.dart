@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:house_party/pages/home/home_page.dart';
 import 'package:house_party/pages/login/login_page.dart';
-import 'package:house_party/pages/register/register_user_page.dart';
+import 'package:house_party/pages/register_user/register_user_page.dart';
 
 class HouseParty extends StatelessWidget {
   // This widget is the root of your application.
@@ -13,8 +13,8 @@ class HouseParty extends StatelessWidget {
       // Nomeia rotas
       routes: {
         '/' : (context) => HomePage(),
-        '/user/login': (context) => LoginPage(),
-        '/user/register' : (context) => RegisterPage(),
+        '/user/login': (context) => UserLoginPage(),
+        '/user/register' : (context) => RegisterUserPage(),
       }
     );
   }
