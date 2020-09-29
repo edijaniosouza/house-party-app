@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class InputText extends StatelessWidget {
 
@@ -9,6 +11,7 @@ class InputText extends StatelessWidget {
   final bool _isHidden;
   final double _horizontalMargin;
   final double _verticalMargin;
+  final List<TextInputFormatter> _inputFormatter;
 
   InputText(
     TextEditingController controller,
@@ -19,7 +22,7 @@ class InputText extends StatelessWidget {
       bool isHidden,
       double horizontalMargin,
       double verticalMargin,
-
+      MaskTextInputFormatter mask,
     }
   ): this._controller = controller,
   this._label = label,
@@ -27,7 +30,8 @@ class InputText extends StatelessWidget {
   this._keyboardType = keyboardType,
   this._isHidden = isHidden ?? false,
   this._horizontalMargin = horizontalMargin ?? 0,
-  this._verticalMargin = verticalMargin ?? 0
+  this._verticalMargin = verticalMargin ?? 0,
+  this._inputFormatter = mask == null ? null : [mask]
   ;
   
   @override
@@ -41,6 +45,7 @@ class InputText extends StatelessWidget {
         controller: this._controller,
         keyboardType: this._keyboardType,
         obscureText: _isHidden,
+        inputFormatters: this._inputFormatter,
         decoration: InputDecoration(
           labelText: this._label,
           hintText: this._hint,

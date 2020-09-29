@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:house_party/components/input_text.dart';
 import 'package:house_party/components/outlined_text.dart';
 import 'package:house_party/pages/register_user/register_user_controller.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class RegisterUserPage extends StatefulWidget {
   @override
@@ -49,6 +50,16 @@ class _RegisterUserPageState extends State<RegisterUserPage> {
                   verticalMargin: 8,
                 ),
 
+                InputText(
+                  this._registerController.cpfInputController,
+                  label: 'CPF',
+                  hint: '000.000.000-00',
+                  mask: MaskTextInputFormatter(mask: '###.###.###-##'),
+                  keyboardType: TextInputType.number,
+                  horizontalMargin: 8,
+                  verticalMargin: 8,
+                ),
+
                 SizedBox(
                   width: constraint.maxWidth - 32,
                   child: RaisedButton(
@@ -69,6 +80,16 @@ class _RegisterUserPageState extends State<RegisterUserPage> {
                       setState(() {});
                     },
                   ),
+                ),
+
+                InputText(
+                  this._registerController.numberPhoneInputController,
+                  label: 'Celular',
+                  hint: '(11)99999-9999',
+                  keyboardType: TextInputType.phone,
+                  mask: MaskTextInputFormatter(mask: '(##)#####-####'),
+                  horizontalMargin: 8,
+                  verticalMargin: 8,
                 ),
 
                 InputText(
@@ -119,10 +140,19 @@ class _RegisterUserPageState extends State<RegisterUserPage> {
                           this._registerController.numberAddressInputController,
                           label: 'Número',
                           hint: '831',
+                          keyboardType: TextInputType.number,
                         ),
                       ),
                     ],
                   ),
+                ),
+
+                InputText(
+                  this._registerController.complementAddressInputController,
+                  label: 'Complemento',
+                  hint: 'Apto, casa 1, fundos...',
+                  horizontalMargin: 8,
+                  verticalMargin: 8,
                 ),
 
                 InputText(

@@ -12,6 +12,9 @@ class RegisterUserController {
   TextEditingController numberAddressInputController = TextEditingController();
   TextEditingController neighborhoodAddressInputController = TextEditingController();
   TextEditingController stateAddressInputController = TextEditingController();
+  TextEditingController complementAddressInputController = TextEditingController();
+  TextEditingController numberPhoneInputController = TextEditingController();
+  TextEditingController cpfInputController = TextEditingController();
   String city;
   DateTime _birthday;
 
