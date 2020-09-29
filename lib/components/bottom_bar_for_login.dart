@@ -4,9 +4,7 @@ import 'package:house_party/components/house_party_icons.dart';
 
 // Constrói uma barra inferior que permite acessar a tela de login ou cadastro
 class BottomBarForLogin extends StatelessWidget {
-  const BottomBarForLogin({
-    Key key,
-  }) : super(key: key);
+  final HomeController _homeController = HomeController.getInstace;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +26,7 @@ class BottomBarForLogin extends StatelessWidget {
                   tooltip: 'Acessar tela de login',
                   icon: Icon(HousePartyIcons.sign_in),
                   onPressed: () {
-                    HomeController.navigateToLoginPage(context);
+                    _homeController.navigateToLoginPage(context);
                   },
                 ),
                 Text(
@@ -42,7 +40,9 @@ class BottomBarForLogin extends StatelessWidget {
                 IconButton(
                   tooltip: 'Criar uma nova conta',
                   icon: Icon(HousePartyIcons.pencil),
-                  onPressed: () {},
+                  onPressed: () {
+                    _homeController.navigateToRegisterPage(context);
+                  },
                 ),
                 Text(
                   'Cadastrar',

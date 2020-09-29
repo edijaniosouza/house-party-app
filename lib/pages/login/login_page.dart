@@ -3,19 +3,18 @@ import 'package:house_party/components/button_with_image.dart';
 import 'package:house_party/components/input_text.dart';
 import 'package:house_party/pages/login/login_controller.dart';
 
-class LoginPage extends StatefulWidget {
+class UserLoginPage extends StatefulWidget {
   final LoginController loginController = LoginController();
   
   @override
-  LoginPageState createState() =>  LoginPageState();
+  UserLoginPageState createState() =>  UserLoginPageState();
 }
 
-class  LoginPageState extends State<LoginPage> {
+class  UserLoginPageState extends State<UserLoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.orange[300],
       ),
 
       body: LayoutBuilder(
