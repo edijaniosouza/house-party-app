@@ -13,27 +13,31 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: Colors.orange[300],
+        backgroundColor: Colors.orange[200],
       ),
-      
-      body: Column(
-        // Centraliza o conteudo da tela
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          // Texto da tela com contorno
-          OutlinedText(
-            'House\nParty',
-            fontSize: 55,
-            outlineColor: Colors.orange[900],
-          ),
 
-          Image(
-            image: AssetImage('assets/images/caneca_baloes-vetor.png'),
-            height: 350,
-            width: 300,
-          ),
-        ],
+      body: LayoutBuilder(
+        builder: (context, constraint) => Column(
+          // Centraliza o conteudo da tela
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            // Texto da tela com contorno
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: OutlinedText(
+                'House\nParty',
+                fontSize: constraint.maxHeight * 0.09,
+                outlineColor: Colors.orange[900],
+              ),
+            ),
+
+            Image(
+              image: AssetImage('assets/images/caneca_baloes-vetor.png'),
+              height: constraint.maxHeight * 0.6,
+            ),
+          ],
+        ),
       ),
 
       // Barra inferior para acesso ao login ou cadastro

@@ -11,9 +11,8 @@ class BottomBarForLogin extends StatelessWidget {
     return BottomAppBar(
       color: Colors.orange[300],
       child: Container(
-        height: 65,
+        height: 70,
         child: Row(
-
           // Centraliza e aplica um espaço entre os botões
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
