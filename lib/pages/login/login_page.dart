@@ -57,6 +57,7 @@ class  UserLoginPageState extends State<UserLoginPage> {
                     child: RaisedButton(
                       child: Text('Entrar'),
                       onPressed: () {
+                        _loginController.navigateToCategoryPage(context);
                       },
                     ),
                   ),
@@ -64,12 +65,24 @@ class  UserLoginPageState extends State<UserLoginPage> {
 
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: ButtonWithImage('Conectar usando o Google', 'assets/images/google-account.png')
+                  child: ButtonWithImage(
+                    'Conectar usando o Google',
+                    'assets/images/google-account.png',
+                    () {
+                      _loginController.navigateToCategoryPage(context);
+                    }
+                  )
                 ),
 
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: ButtonWithImage('Conectar usando o Facebook', 'assets/images/facebook-account.png')
+                  child: ButtonWithImage(
+                    'Conectar usando o Facebook',
+                    'assets/images/facebook-account.png',
+                    () {
+                      _loginController.navigateToCategoryPage(context);
+                    }
+                  )
                 ),
 
               ],

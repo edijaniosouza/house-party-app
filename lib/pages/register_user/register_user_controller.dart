@@ -26,4 +26,8 @@ class RegisterUserController {
   }
 
   static get getInstance => _instance;
+
+  navigateToCategoryPage(BuildContext context) {
+    Navigator.pushNamedAndRemoveUntil(context, '/category', (route) => false);
+  }
 }
