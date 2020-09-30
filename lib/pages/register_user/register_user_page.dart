@@ -191,7 +191,9 @@ class _RegisterUserPageState extends State<RegisterUserPage> {
                     child: Text(
                       'Cadastrar'
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      _registerController.navigateToCategoryPage(context);
+                    },
                   ),
                 ),
 

@@ -4,11 +4,13 @@ class ButtonWithImage extends StatelessWidget {
   final String _label;
   final String _image;
   final Color _color;
+  final Function _onPressed;
   
-  ButtonWithImage(String label, String image, {Color color})
+  ButtonWithImage(String label, String image, onPressed, {Color color})
   : this._label = label,
   this._image = image,
-  this._color = color
+  this._color = color,
+  this._onPressed = onPressed
   ;
   
   @override
@@ -28,7 +30,7 @@ class ButtonWithImage extends StatelessWidget {
           Text(this._label)
         ],
       ),
-      onPressed: () {},
+      onPressed: this._onPressed,
     );
   }
 }
