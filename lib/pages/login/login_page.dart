@@ -3,14 +3,14 @@ import 'package:house_party/components/button_with_image.dart';
 import 'package:house_party/components/input_text.dart';
 import 'package:house_party/pages/login/login_controller.dart';
 
-class UserLoginPage extends StatefulWidget {
-  final LoginController loginController = LoginController();
-  
+class UserLoginPage extends StatefulWidget {  
   @override
   UserLoginPageState createState() =>  UserLoginPageState();
 }
 
 class  UserLoginPageState extends State<UserLoginPage> {
+  LoginController _loginController = LoginController.getInstance;
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +33,7 @@ class  UserLoginPageState extends State<UserLoginPage> {
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8.0),
                   child: InputText(
-                    widget.loginController.loginTextController,
+                    _loginController.loginTextController,
                     label: 'Usuário',
                     hint: 'E-mail ou telefone',
                   )
@@ -42,7 +42,7 @@ class  UserLoginPageState extends State<UserLoginPage> {
                 Padding(
                   padding: const EdgeInsets.only(top: 8, bottom: 8),
                   child: InputText(
-                    widget.loginController.passwordTextController,
+                    _loginController.passwordTextController,
                     label: 'Senha',
                     hint: 'Infome sua senha',
                     isHidden: true,
@@ -64,7 +64,7 @@ class  UserLoginPageState extends State<UserLoginPage> {
 
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: ButtonWithImage('Conctar usando o Google', 'assets/images/google-account.png')
+                  child: ButtonWithImage('Conectar usando o Google', 'assets/images/google-account.png')
                 ),
 
                 Padding(
