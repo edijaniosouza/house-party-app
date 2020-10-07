@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:house_party/pages/category/category_page.dart';
 import 'package:house_party/pages/home/home_page.dart';
 import 'package:house_party/pages/login/login_page.dart';
+import 'package:house_party/pages/product/product_page.dart';
 import 'package:house_party/pages/register_user/register_user_page.dart';
 import 'package:house_party/pages/company/register_company_page.dart';
 
@@ -19,6 +20,7 @@ class HouseParty extends StatelessWidget {
         '/user/register' : (context) => RegisterUserPage(),
         '/company/register' : (context) => RegisterCompanyPage(),
         '/category' : (context) => CategoryPage(),
+        '/product' : (context) => ProductPage(),
       },
 
       theme: ThemeData(

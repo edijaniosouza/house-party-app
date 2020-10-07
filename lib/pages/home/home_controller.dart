@@ -16,7 +16,7 @@ class HomeController {
     Navigator.pushNamed(context, '/user/register');
   }
 
-  static void navigateToRegisterCompanyPage(BuildContext context) {
+  void navigateToRegisterCompanyPage(BuildContext context) {
     Navigator.pushNamed(context, '/company/register');
   }
 }

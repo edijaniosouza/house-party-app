@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:house_party/components/outlined_text.dart';
 import 'package:house_party/dao/category_dao.dart';
 import 'package:house_party/models/category.dart';
+import 'package:house_party/pages/category/category_controller.dart';
 
 class CategoryPage extends StatefulWidget {
   @override
@@ -9,6 +10,7 @@ class CategoryPage extends StatefulWidget {
 }
 
 class _CategoryPageState extends State<CategoryPage> {
+  final CategoryController _categoryController = CategoryController.instance;
   List<Category> _categoriesList = getCategories();
   
   @override
@@ -38,7 +40,7 @@ class _CategoryPageState extends State<CategoryPage> {
                   width: 0.5
                 ),
                 onPressed: () {
-                  
+                  _categoryController.navigateToProductPage(context);
                 },
               ),
             ),
