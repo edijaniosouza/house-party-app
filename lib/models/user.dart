@@ -30,6 +30,7 @@ class User {
   int get id => _id;
   String get name => _name;
   int get cpf => _cpf;
+  DateTime get dateOfBirth => this._dateOfBirth;
   String get userName => _userName;
   String get email => _email;
   String get password => _password;
