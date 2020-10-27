@@ -9,7 +9,7 @@ class CategoryWebClient {
   Future<List<Category>> findAll() async {
     final Response response = await client.get('$url/categoria').timeout(Duration(seconds: 30));
 
-    final List<dynamic> responseJson = jsonDecode(response.body);
+    final List<dynamic> responseJson = jsonDecode(utf8.decode(response.bodyBytes));
     return responseJson.map((json) => Category.fromJson(json)).toList();
   }
 }
