@@ -24,12 +24,16 @@ class HouseParty extends StatelessWidget {
       },
 
       theme: ThemeData(
+        primaryColor: Colors.black,
+        scaffoldBackgroundColor: Colors.grey[400],
         appBarTheme: AppBarTheme(
           color: Colors.orange[300],
           centerTitle: true,
         ),
-
-        buttonColor: Colors.orange[300],
+        buttonTheme: ButtonThemeData(
+          buttonColor: Colors.orange[300],
+          textTheme: ButtonTextTheme.normal,
+        ),
       ),
     );
   }
