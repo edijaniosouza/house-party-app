@@ -1,9 +1,14 @@
 class Category {
-  final int _idCategory;
-  final String _description;
+  int _idCategory;
+  String _description;
 
   Category(this._idCategory, this._description);
 
-  get getDescription => this._description;
-  get getId => this._idCategory;
+  Category.fromJson(Map<String, dynamic> json) {
+    this._idCategory = json['id_categoria'];
+    this._description = json['descricao'];
+  }
+
+  get description => this._description;
+  get id => this._idCategory;
 }

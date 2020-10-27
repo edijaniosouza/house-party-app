@@ -23,6 +23,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  http: ^0.12.2
+  http_interceptor: ^0.3.3
   date_format: ^1.0.9
   mask_text_input_formatter: ^1.1.0
 
