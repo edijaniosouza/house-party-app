@@ -11,4 +11,11 @@ class Category {
 
   get description => this._description;
   get id => this._idCategory;
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id_categoria' : this._idCategory,
+      'descricao' : this._description
+    };
+  }
 }
