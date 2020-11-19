@@ -8,5 +8,5 @@ class ProductListController {
   ProductListController._();
 
   static ProductListController get instance => _instance;
-  get productWebClient => this.productWebClient;
+  get productWebClient => this._productWebClient;
 }

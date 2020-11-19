@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:house_party/http/webclients/category_webclient.dart';
-import 'package:house_party/http/webclients/product_webclient.dart';
 
 class CategoryController {
   static final CategoryController _instance = CategoryController._();

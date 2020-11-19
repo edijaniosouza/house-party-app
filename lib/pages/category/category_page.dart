@@ -49,7 +49,6 @@ class _CategoryPageState extends State<CategoryPage> {
                 );
               }
               this._categoriesList = snapshot.data;
-              debugPrint(snapshot.data.toString());
               return ListView.builder(
                 padding: EdgeInsets.all(8),
                 itemCount: this._categoriesList.length,
