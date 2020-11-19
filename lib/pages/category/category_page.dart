@@ -66,7 +66,10 @@ class _CategoryPageState extends State<CategoryPage> {
                             width: 0.5
                         ),
                         onPressed: () {
-                          _categoryController.navigateToProductPage(context);
+                          _categoryController.navigateToProductPage(
+                            context,
+                            _categoriesList[index].id
+                          );
                         },
                       ),
                     ),

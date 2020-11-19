@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:house_party/http/webclients/category_webclient.dart';
+import 'package:house_party/http/webclients/product_webclient.dart';
 
 class CategoryController {
   static final CategoryController _instance = CategoryController._();
@@ -10,7 +11,7 @@ class CategoryController {
   static CategoryController get instance => _instance;
   get categoryWebClient => this._categoryWebClient;
 
-  void navigateToProductPage(BuildContext context) {
-    Navigator.pushNamed(context, '/product');
+  void navigateToProductPage(BuildContext context, int idCategory) {
+    Navigator.pushNamed(context, '/product', arguments: idCategory);
   }
 }
