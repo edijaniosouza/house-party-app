@@ -9,8 +9,8 @@ class Category {
     this._description = json['descricao'];
   }
 
-  get description => this._description;
-  get id => this._idCategory;
+  int get id => this._idCategory;
+  String get description => this._description;
 
   Map<String, dynamic> toMap() {
     return {

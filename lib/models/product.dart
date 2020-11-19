@@ -4,7 +4,7 @@ import 'package:house_party/models/provider.dart';
 class Product {
   int _id;
   String _description;
-  int _ean;
+  String _ean;
   Provider _provider;
   double _price;
   Category _category;
@@ -15,12 +15,12 @@ class Product {
     this._id = json['id_produto'];
     this._description = json['descricao'];
     this._ean = json['ean'];
-    this._category = Category.fromJson(json['category']);
+    this._category = Category.fromJson(json['categoria']);
   }
 
   int get id => this._id;
   String get description => this._description;
-  int get ean => this._ean;
+  String get ean => this._ean;
   double get price => this._price;
   Provider get provider => this._provider;
   Category get category => this._category;
