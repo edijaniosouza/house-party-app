@@ -36,6 +36,7 @@ class BottomBarForLogin extends StatelessWidget {
             ),
             // Inclui o botão de acesso a tela de cadastro
             Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 IconButton(
                   tooltip: 'Criar uma nova conta',
