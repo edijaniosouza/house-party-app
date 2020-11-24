@@ -21,6 +21,14 @@ class _ProductListPageState extends State<ProductListPage> {
       appBar: AppBar(
         title: OutlinedText('House Party', fontSize: 22,),
       ),
+      
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        child: RaisedButton(
+          child: Text('Ir para carrinho'),
+          onPressed: () => null,
+        ),
+      ),
 
       body: FutureBuilder(
         future: this._productListController.productWebClient.findByCategory(idCategory),
