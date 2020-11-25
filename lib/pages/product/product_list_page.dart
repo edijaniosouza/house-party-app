@@ -49,7 +49,7 @@ class _ProductListPageState extends State<ProductListPage> {
                     child: Text(
                       'Error',
                       style: TextStyle(
-                          fontSize: 28
+                        fontSize: 28
                       ),
                     )
                 );

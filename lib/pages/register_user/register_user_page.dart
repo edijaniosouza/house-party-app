@@ -12,7 +12,7 @@ class RegisterUserPage extends StatefulWidget {
 }
 
 class _RegisterUserPageState extends State<RegisterUserPage> {
-  RegisterUserController _registerController = RegisterUserController.getInstance;
+  RegisterUserController _registerController = RegisterUserController.instance;
   
   @override
   Widget build(BuildContext context) {
@@ -96,6 +96,15 @@ class _RegisterUserPageState extends State<RegisterUserPage> {
                   this._registerController.emailInputController,
                   label: 'E-mail',
                   hint: 'exemplo@houseparty.com',
+                  keyboardType: TextInputType.emailAddress,
+                  horizontalMargin: 8,
+                  verticalMargin: 8,
+                ),
+
+                InputText(
+                  this._registerController.usernameController,
+                  label: 'Nome de usuário',
+                  hint: 'house_party',
                   keyboardType: TextInputType.emailAddress,
                   horizontalMargin: 8,
                   verticalMargin: 8,
@@ -192,8 +201,8 @@ class _RegisterUserPageState extends State<RegisterUserPage> {
                       'Cadastrar'
                     ),
                     onPressed: () {
-                      _registerController.navigateToCategoryPage(context);
-                    },
+                      this._registerController.registerButonAction();
+                    }
                   ),
                 ),
 
