@@ -17,78 +17,82 @@ class  UserLoginPageState extends State<UserLoginPage> {
       appBar: AppBar(
       ),
 
-      body: LayoutBuilder(
-        builder: (context, constraints) => SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.only(
-              top: constraints.maxHeight * 0.2,
-              left: constraints.maxWidth * 0.08,
-              right: constraints.maxWidth * 0.08
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
+      body: Form(
+        key: this._loginController.formKey,
+        child: LayoutBuilder(
+          builder: (context, constraints) => SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.only(
+                top: constraints.maxHeight * 0.2,
+                left: constraints.maxWidth * 0.08,
+                right: constraints.maxWidth * 0.08
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
 
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 8.0),
-                  child: InputText(
-                    _loginController.loginTextController,
-                    label: 'Usuário',
-                    hint: 'E-mail ou telefone',
-                  )
-                ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 8.0),
+                    child: InputText(
+                      _loginController.loginTextController,
+                      label: 'Usuário',
+                      hint: 'E-mail ou telefone',
+                      validator: (value) => this._loginController.validateUserInput(value),
+                    )
+                  ),
 
-                Padding(
-                  padding: const EdgeInsets.only(top: 8, bottom: 8),
-                  child: InputText(
-                    _loginController.passwordTextController,
-                    label: 'Senha',
-                    hint: 'Infome sua senha',
-                    isHidden: true,
-                  )
-                ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8, bottom: 8),
+                    child: InputText(
+                      _loginController.passwordTextController,
+                      label: 'Senha',
+                      hint: 'Infome sua senha',
+                      isHidden: true,
+                      validator: (value) => this._loginController.validatePasswordInput(value),
+                    )
+                  ),
 
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: SizedBox(
-                    width: constraints.maxWidth,
-                    height: 48,
-                    child: RaisedButton(
-                      child: Text('Entrar'),
-                      onPressed: () {
-                        _loginController.navigateToCategoryPage(context);
-                      },
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    child: SizedBox(
+                      width: constraints.maxWidth,
+                      height: 48,
+                      child: RaisedButton(
+                        child: Text('Entrar'),
+                        onPressed: () {
+                          this._loginController.validateAccess(context);
+                        },
+                      ),
                     ),
                   ),
-                ),
 
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: ButtonWithImage(
-                    'Conectar usando o Google',
-                    'assets/images/google-account.png',
-                    () {
-                      _loginController.navigateToCategoryPage(context);
-                    }
-                  )
-                ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    child: ButtonWithImage(
+                      'Conectar usando o Google',
+                      'assets/images/google-account.png',
+                      () {
+                        _loginController.navigateToCategoryPage(context);
+                      }
+                    )
+                  ),
 
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: ButtonWithImage(
-                    'Conectar usando o Facebook',
-                    'assets/images/facebook-account.png',
-                    () {
-                      _loginController.navigateToCategoryPage(context);
-                    }
-                  )
-                ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    child: ButtonWithImage(
+                      'Conectar usando o Facebook',
+                      'assets/images/facebook-account.png',
+                      () {
+                      }
+                    )
+                  ),
 
-              ],
+                ],
+              ),
             ),
-          ),
-        )
+          )
+        ),
       ),
     );
   }

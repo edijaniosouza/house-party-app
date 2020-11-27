@@ -5,6 +5,7 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 class InputText extends StatelessWidget {
 
   final TextEditingController _controller;
+  final String Function(String) _validator;
   final String _label;
   final String _hint;
   final TextInputType _keyboardType;
@@ -23,6 +24,7 @@ class InputText extends StatelessWidget {
       double horizontalMargin,
       double verticalMargin,
       MaskTextInputFormatter mask,
+      String Function(String) validator
     }
   ): this._controller = controller,
   this._label = label,
@@ -31,7 +33,8 @@ class InputText extends StatelessWidget {
   this._isHidden = isHidden ?? false,
   this._horizontalMargin = horizontalMargin ?? 0,
   this._verticalMargin = verticalMargin ?? 0,
-  this._inputFormatter = mask == null ? null : [mask]
+  this._inputFormatter = mask == null ? null : [mask],
+  this._validator = validator
   ;
   
   @override
@@ -41,15 +44,18 @@ class InputText extends StatelessWidget {
         horizontal: this._horizontalMargin,
         vertical: this._verticalMargin,
       ),
-      child: TextField(
+      child: TextFormField(
+        style: TextStyle(
+          color: Colors.white
+        ),
         controller: this._controller,
+        validator: this._validator,
         keyboardType: this._keyboardType,
         obscureText: _isHidden,
         inputFormatters: this._inputFormatter,
         decoration: InputDecoration(
           labelText: this._label,
           hintText: this._hint,
-          border: OutlineInputBorder()
         ),
       ),
     );
