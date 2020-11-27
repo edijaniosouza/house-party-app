@@ -3,23 +3,23 @@ import 'package:house_party/models/address.dart';
 class User {
   int _id;
   String _name;
-  int _cpf;
+  String _cpf;
   DateTime _dateOfBirth;
   String _userName;
   String _email;
   String _password;
-  int _phone;
+  String _phone;
   Address _address;
 
   User({
     int id,
     String name,
-    int cpf,
+    String cpf,
     DateTime dateOfBirth,
     String email,
     String userName,
     String password,
-    int phone,
+    String phone,
     Address address
   })
   : this._id = id,
@@ -58,11 +58,11 @@ class User {
 
   int get id => _id;
   String get name => _name;
-  int get cpf => _cpf;
+  String get cpf => _cpf;
   DateTime get dateOfBirth => this._dateOfBirth;
   String get userName => _userName;
   String get email => _email;
   String get password => _password;
-  int get phone => _phone;
+  String get phone => _phone;
   Address get address => this._address;
 }
