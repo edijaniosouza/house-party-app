@@ -38,13 +38,13 @@ class RegisterUserController {
   User createUser() {
     return User(
       name: nameInputController.text,
-      cpf: int.tryParse(cpfInputController.text),
+      cpf: cpfInputController.text,
       email: emailInputController.text,
       password: passwordInputController.text,
       userName: usernameController.text,
-      phone: int.tryParse(numberPhoneInputController.text),
+      phone: numberPhoneInputController.text,
       address: Address(
-        cep: 00000000,
+        cep: '00000000',
         street: streetAddressInputController.text,
         number: int.tryParse(numberAddressInputController.text),
         neighborhood: neighborhoodAddressInputController.text,

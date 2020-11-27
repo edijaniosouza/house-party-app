@@ -1,6 +1,6 @@
 class Address {
   int _id;
-  int _cep;
+  String _cep;
   String _street;
   int _number;
   String _complement;
@@ -10,7 +10,7 @@ class Address {
   Address(
     {
       int id,
-      int cep,
+      String cep,
       String street,
       int number,
       String complement,
@@ -35,7 +35,7 @@ class Address {
   }
 
   int get id => _id;
-  int get cep => _cep;
+  String get cep => _cep;
   String get street => _street;
   int get number => _number;
   String get city => _city;
