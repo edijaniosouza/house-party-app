@@ -18,29 +18,37 @@ class UserWebClient {
       ).timeout(Duration(seconds: 30));
   }
 
-  Future<bool> loginWithUserName(String userName, String password) async {
-    Response response = await client.get('$url/cliente/autenticacao?usuario=$userName&senha=$password');
-    if(response.statusCode == 202) {
-      return true;
-    }
-    return false;
+  Future<bool> authentic(String userName, String password) async {
+    Response response = await client.get(
+        '$url/cliente/autenticacao?usuario=$userName&senha=$password'
+    ).timeout(Duration(seconds: 30));
+
+    return response.statusCode == 202 ? true : false;
   }
 
-  Future<User> loginWithEmail(String email, String password) async {
-    Response response = await client.get(
-      '$url/cliente/email/$email'
-    ).timeout(Duration(seconds: 30));
-    
-    if (response.statusCode == 200) {
-      Map<String, dynamic> responseJson = jsonDecode(utf8.decode(response.bodyBytes));
-      User user = User.fromJson(responseJson);
-      if(await loginWithUserName(user.userName, password)) {
-        return user;
-      }
-    } else {
-      return null;
+  Future<User> loginWithUserName(String userName, String password) async {
+    if(await authentic(userName, password)) {
+      return await findByUserName(userName);
     }
+    return null;
+  }
 
+
+  Future<User> loginWithEmail(String email, String password) async {
+    User user = await findByEmail(email);
+    if (await authentic(user.userName, password)) {
+      return user;
+    }
+    return null;
+  }
+
+  Future<User> findByUserName(String username) async {
+    Response response = await client.get(
+      '$url/usuario?usuario=$username'
+    ).timeout(Duration(seconds: 30));
+
+    Map<String, dynamic> respondeJson = jsonDecode(utf8.decode(response.bodyBytes));
+    return User.fromJson(respondeJson);
   }
 
   Future<User> findByEmail(String email) async {
