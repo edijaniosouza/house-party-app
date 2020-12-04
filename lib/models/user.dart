@@ -65,4 +65,12 @@ class User {
   String get password => _password;
   String get phone => _phone;
   Address get address => this._address;
+
+  @override
+  String toString() {
+    return 'USER: {id: $id, nome: $name, cpf: $cpf, '
+      'date of birth: $dateOfBirth, username: $userName, email: $email, '
+      'password: $password, phone: $phone, address: ${address.toString()}}'
+    ;
+  }
 }

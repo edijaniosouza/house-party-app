@@ -13,25 +13,28 @@ class UserDAO {
 
   static const String createTable = (
     'CREATE TABLE $_tableName('
-    '$_id PRIMARY KEY,'
-    '$_name TEXT,'
-    '$_userName TEXT,'
-    '$_email TEXT,'
-    '$_password TEXT,'
-    ');'
+      '$_id INTEGER PRIMARY KEY,'
+      '$_name TEXT,'
+      '$_userName TEXT,'
+      '$_email TEXT,'
+      '$_password TEXT'
+    ')'
   );
 
-  void save(User user) async {
+  Future<int> save(User user) async {
     Database db = await createDataBase();
 
     Map<String, dynamic> userMap = {
-      _name: user.name,
-      _userName: user.userName,
-      _email: user.email,
-      _password: user.password
+      _name : user.name,
+      _userName : user.userName,
+      _email : user.email,
+      _password : user.password
     };
 
-    db.insert(_tableName, userMap);
+    print('Salvando usuário...');
+    int id = await db.insert(_tableName, userMap);
+    print('Usuário salvo com o ID $id.');
+    return id;
   }
   
 }
