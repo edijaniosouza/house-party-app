@@ -61,7 +61,7 @@ class  UserLoginPageState extends State<UserLoginPage> {
                       child: RaisedButton(
                         child: Text('Entrar'),
                         onPressed: () {
-                          this._loginController.validateAccess(context);
+                          this._loginController.actionEnterButton(context);
                         },
                       ),
                     ),
