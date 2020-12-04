@@ -6,6 +6,8 @@ import 'package:house_party/models/user.dart';
 class RegisterUserController {
   
   static RegisterUserController _instance = RegisterUserController._();
+  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   TextEditingController _nameInputController = TextEditingController();
   TextEditingController _surnameInputController = TextEditingController();
   TextEditingController _emailInputController = TextEditingController();
@@ -19,7 +21,8 @@ class RegisterUserController {
   TextEditingController _complementAddressInputController = TextEditingController();
   TextEditingController _numberPhoneInputController = TextEditingController();
   TextEditingController _cpfInputController = TextEditingController();
-  String city;
+  TextEditingController _cityInputController = TextEditingController();
+
   DateTime _birthday;
 
   RegisterUserController._();
@@ -48,7 +51,7 @@ class RegisterUserController {
         street: streetAddressInputController.text,
         number: int.tryParse(numberAddressInputController.text),
         neighborhood: neighborhoodAddressInputController.text,
-        city: city,
+        city: cityInputController.text,
       )
     );
   }
@@ -57,100 +60,82 @@ class RegisterUserController {
     UserWebClient().saveUser(user);
   }
 
-  void registerButonAction() {
-    saveUserOnDB(
-      createUser()
-    );
+  void registerActionButton() {
+    if (this.formKey.currentState.validate()) {
+      // TODO: Salvar usuário no banco de dados e enviar para API
+    }
   }
 
-  TextEditingController get nameInputController => _nameInputController;
-
-  set nameInputController(TextEditingController value) {
-    _nameInputController = value;
+  validateEmptyInput(String value) {
+    if (value.isEmpty) {
+      return 'Este campo é obrigatório';
+    }
   }
 
-  TextEditingController get surnameInputController => _surnameInputController;
-
-  set surnameInputController(TextEditingController value) {
-    _surnameInputController = value;
+  validateNameInput(String value) {
+    if(value.length < 2) {
+      return 'Informe seu nome';
+    }
   }
 
-  TextEditingController get emailInputController => _emailInputController;
-
-  set emailInputController(TextEditingController value) {
-    _emailInputController = value;
+  validateSurnameInput(String value) {
+    if(value.length < 3) {
+      return 'Informe seu sobrenome';
+    }
   }
 
-  TextEditingController get usernameController => _usernameController;
-
-  set usernameController(TextEditingController value) {
-    _usernameController = value;
+  validateCpfInput(String value) {
+    if(value.length < 11) {
+      return 'Informe um CPF válido';
+    }
   }
 
-  TextEditingController get passwordInputController => _passwordInputController;
-
-  set passwordInputController(TextEditingController value) {
-    _passwordInputController = value;
+  validatePhoneInput(String value) {
+    if(value.length < 14) {
+      return 'Informe um número de celular válido';
+    }
   }
 
-  TextEditingController get repeatPasswordInputController =>
-      _repeatPasswordInputController;
-
-  set repeatPasswordInputController(TextEditingController value) {
-    _repeatPasswordInputController = value;
+  validateEmailInput(String value) {
+    if(value.isEmpty || !value.contains('@') || !value.contains('.')) {
+      return 'Informe um e-mail válido';
+    }
   }
 
-  TextEditingController get streetAddressInputController =>
-      _streetAddressInputController;
-
-  set streetAddressInputController(TextEditingController value) {
-    _streetAddressInputController = value;
+  validateUsernameInput(String value) {
+    if(value.contains('@')) {
+      return 'O nome de usuário não pode conter \'@\'';
+    } else if(value.length < 3) {
+      return 'Nome de usuário inválido';
+    }
   }
 
-  TextEditingController get numberAddressInputController =>
-      _numberAddressInputController;
-
-  set numberAddressInputController(TextEditingController value) {
-    _numberAddressInputController = value;
+  validatePasswordInput(String value) {
+    if(value.length < 6) {
+      return 'Sua senha deve ter no mínimo 6 caracteres';
+    }
   }
 
-  TextEditingController get neighborhoodAddressInputController =>
-      _neighborhoodAddressInputController;
-
-  set neighborhoodAddressInputController(TextEditingController value) {
-    _neighborhoodAddressInputController = value;
+  validateRepeatPasswordInput(String value) {
+    if(value != passwordInputController.text) {
+      return 'As senhas não conferem';
+    }
   }
 
-  TextEditingController get stateAddressInputController =>
-      _stateAddressInputController;
-
-  set stateAddressInputController(TextEditingController value) {
-    _stateAddressInputController = value;
-  }
-
-  TextEditingController get complementAddressInputController =>
-      _complementAddressInputController;
-
-  set complementAddressInputController(TextEditingController value) {
-    _complementAddressInputController = value;
-  }
-
-  TextEditingController get numberPhoneInputController =>
-      _numberPhoneInputController;
-
-  set numberPhoneInputController(TextEditingController value) {
-    _numberPhoneInputController = value;
-  }
-
-  TextEditingController get cpfInputController => _cpfInputController;
-
-  set cpfInputController(TextEditingController value) {
-    _cpfInputController = value;
-  }
-
+  GlobalKey<FormState> get formKey => _formKey;
   DateTime get birthday => _birthday;
-
-  set birthday(DateTime value) {
-    _birthday = value;
-  }
+  TextEditingController get cityInputController => _cityInputController;
+  TextEditingController get cpfInputController => _cpfInputController;
+  TextEditingController get numberPhoneInputController => _numberPhoneInputController;
+  TextEditingController get complementAddressInputController => _complementAddressInputController;
+  TextEditingController get stateAddressInputController => _stateAddressInputController;
+  TextEditingController get neighborhoodAddressInputController => _neighborhoodAddressInputController;
+  TextEditingController get numberAddressInputController => _numberAddressInputController;
+  TextEditingController get streetAddressInputController => _streetAddressInputController;
+  TextEditingController get repeatPasswordInputController => _repeatPasswordInputController;
+  TextEditingController get passwordInputController => _passwordInputController;
+  TextEditingController get usernameController => _usernameController;
+  TextEditingController get emailInputController => _emailInputController;
+  TextEditingController get surnameInputController => _surnameInputController;
+  TextEditingController get nameInputController => _nameInputController;
 }

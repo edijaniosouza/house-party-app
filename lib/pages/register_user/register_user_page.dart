@@ -26,190 +26,193 @@ class _RegisterUserPageState extends State<RegisterUserPage> {
         ),
       ),
 
-      body: LayoutBuilder(
-        builder: (context, constraint) {
-          return SingleChildScrollView(
-            padding: EdgeInsets.all(8),
+      body: Form(
+        key: this._registerController.formKey,
+        child: LayoutBuilder(
+          builder: (context, constraint) {
+            return SingleChildScrollView(
+              padding: EdgeInsets.all(8),
 
-            child: Column(
-              children: [
+              child: Column(
+                children: [
 
-                InputText(
-                  this._registerController.nameInputController,
-                  label: 'Nome',
-                  hint: 'Informe seu nome',
-                  horizontalMargin: 8,
-                  verticalMargin: 8,
-                ),
-
-                InputText(
-                  this._registerController.surnameInputController,
-                  label: 'Sobrenome',
-                  hint: 'Informe seu sobrenome',
-                  horizontalMargin: 8,
-                  verticalMargin: 8,
-                ),
-
-                InputText(
-                  this._registerController.cpfInputController,
-                  label: 'CPF',
-                  hint: '000.000.000-00',
-                  mask: MaskTextInputFormatter(mask: '###.###.###-##'),
-                  keyboardType: TextInputType.number,
-                  horizontalMargin: 8,
-                  verticalMargin: 8,
-                ),
-
-                SizedBox(
-                  width: constraint.maxWidth - 32,
-                  child: RaisedButton(
-                    child: Text(
-                      this._registerController.getBirthday == null ?
-                      'Data de nascimento' :
-                      formatDate(this._registerController.getBirthday, [dd, '/', mm, '/', yyyy])
-                    ),
-                    onPressed: () async {
-                      _registerController.setBirthday(
-                        await showDatePicker(
-                        context: context,
-                        initialDate: DateTime.now(),
-                        firstDate: DateTime(1900),
-                        lastDate: DateTime.now()
-                        )
-                      );
-                      setState(() {});
-                    },
+                  InputText(
+                    this._registerController.nameInputController,
+                    label: 'Nome',
+                    hint: 'Informe seu nome',
+                    horizontalMargin: 8,
+                    verticalMargin: 8,
+                    validator: (value) => this._registerController.validateNameInput(value)
                   ),
-                ),
 
-                InputText(
-                  this._registerController.numberPhoneInputController,
-                  label: 'Celular',
-                  hint: '(11)99999-9999',
-                  keyboardType: TextInputType.phone,
-                  mask: MaskTextInputFormatter(mask: '(##)#####-####'),
-                  horizontalMargin: 8,
-                  verticalMargin: 8,
-                ),
+                  InputText(
+                    this._registerController.surnameInputController,
+                    label: 'Sobrenome',
+                    hint: 'Informe seu sobrenome',
+                    horizontalMargin: 8,
+                    verticalMargin: 8,
+                    validator: (value) => this._registerController.validateSurnameInput(value)
+                  ),
 
-                InputText(
-                  this._registerController.emailInputController,
-                  label: 'E-mail',
-                  hint: 'exemplo@houseparty.com',
-                  keyboardType: TextInputType.emailAddress,
-                  horizontalMargin: 8,
-                  verticalMargin: 8,
-                ),
+                  InputText(
+                    this._registerController.cpfInputController,
+                    label: 'CPF',
+                    hint: '000.000.000-00',
+                    mask: MaskTextInputFormatter(mask: '###.###.###-##'),
+                    keyboardType: TextInputType.number,
+                    horizontalMargin: 8,
+                    verticalMargin: 8,
+                    validator: (value) => this._registerController.validateCpfInput(value),
+                  ),
 
-                InputText(
-                  this._registerController.usernameController,
-                  label: 'Nome de usuário',
-                  hint: 'house_party',
-                  keyboardType: TextInputType.emailAddress,
-                  horizontalMargin: 8,
-                  verticalMargin: 8,
-                ),
-
-                InputText(
-                  this._registerController.passwordInputController,
-                  label: 'Senha',
-                  hint: 'Informe sua senha',
-                  isHidden: true,
-                  horizontalMargin: 8,
-                  verticalMargin: 8,
-                ),
-
-                InputText(
-                  this._registerController.repeatPasswordInputController,
-                  label: 'Confirme a senha',
-                  hint: 'Repita a senha',
-                  isHidden: true,
-                  horizontalMargin: 8,
-                  verticalMargin: 8,
-                ),
-
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      SizedBox(
-                        width: constraint.maxWidth * 0.7,
-                        child: InputText(
-                          this._registerController.streetAddressInputController,
-                          label: 'Logradouro',
-                          hint: 'Rua Vergueiro',
-                        ),
+                  SizedBox(
+                    width: constraint.maxWidth - 32,
+                    child: RaisedButton(
+                      child: Text(
+                        this._registerController.getBirthday == null ?
+                        'Data de nascimento' :
+                        formatDate(this._registerController.getBirthday, [dd, '/', mm, '/', yyyy])
                       ),
+                      onPressed: () async {
+                        _registerController.setBirthday(
+                          await showDatePicker(
+                          context: context,
+                          initialDate: DateTime.now(),
+                          firstDate: DateTime(1900),
+                          lastDate: DateTime.now()
+                          )
+                        );
+                        setState(() {});
+                      },
+                    ),
+                  ),
 
-                      SizedBox(
-                        width: constraint.maxWidth * 0.2,
-                        child: InputText(
-                          this._registerController.numberAddressInputController,
-                          label: 'Número',
-                          hint: '831',
-                          keyboardType: TextInputType.number,
+                  InputText(
+                    this._registerController.numberPhoneInputController,
+                    label: 'Celular',
+                    hint: '(11)99999-9999',
+                    keyboardType: TextInputType.phone,
+                    mask: MaskTextInputFormatter(mask: '(##)#####-####'),
+                    horizontalMargin: 8,
+                    verticalMargin: 8,
+                    validator: (value) => this._registerController.validatePhoneInput(value),
+                  ),
+
+                  InputText(
+                    this._registerController.emailInputController,
+                    label: 'E-mail',
+                    hint: 'exemplo@houseparty.com',
+                    keyboardType: TextInputType.emailAddress,
+                    horizontalMargin: 8,
+                    verticalMargin: 8,
+                    validator: (value) => this._registerController.validateEmailInput(value),
+                  ),
+
+                  InputText(
+                    this._registerController.usernameController,
+                    label: 'Nome de usuário',
+                    hint: 'house_party',
+                    keyboardType: TextInputType.emailAddress,
+                    horizontalMargin: 8,
+                    verticalMargin: 8,
+                    validator: (value) => this._registerController.validateUsernameInput(value),
+                  ),
+
+                  InputText(
+                    this._registerController.passwordInputController,
+                    label: 'Senha',
+                    hint: 'Informe sua senha',
+                    isHidden: true,
+                    horizontalMargin: 8,
+                    verticalMargin: 8,
+                    validator: (value) => this._registerController.validatePasswordInput(value),
+                  ),
+
+                  InputText(
+                    this._registerController.repeatPasswordInputController,
+                    label: 'Confirme a senha',
+                    hint: 'Repita a senha',
+                    isHidden: true,
+                    horizontalMargin: 8,
+                    verticalMargin: 8,
+                    validator: (value) => this._registerController.validateRepeatPasswordInput(value),
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        SizedBox(
+                          width: constraint.maxWidth * 0.7,
+                          child: InputText(
+                            this._registerController.streetAddressInputController,
+                            label: 'Logradouro',
+                            hint: 'Rua Vergueiro',
+                            validator: (value) => this._registerController.validateEmptyInput(value),
+                          ),
                         ),
+
+                        SizedBox(
+                          width: constraint.maxWidth * 0.2,
+                          child: InputText(
+                            this._registerController.numberAddressInputController,
+                            label: 'Número',
+                            hint: '831',
+                            keyboardType: TextInputType.number,
+                            validator: (value) => this._registerController.validateEmptyInput(value),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  InputText(
+                    this._registerController.complementAddressInputController,
+                    label: 'Complemento',
+                    hint: 'Apto, casa 1, fundos...',
+                    horizontalMargin: 8,
+                    verticalMargin: 8,
+                    validator: (value) => this._registerController.validateEmptyInput(value),
+                  ),
+
+                  InputText(
+                    this._registerController.neighborhoodAddressInputController,
+                    label: 'Bairro',
+                    hint: 'Liberdade',
+                    horizontalMargin: 8,
+                    verticalMargin: 8,
+                    validator: (value) => this._registerController.validateEmptyInput(value),
+                  ),
+
+                  InputText(
+                    this._registerController.neighborhoodAddressInputController,
+                    label: 'Cidade',
+                    hint: 'São Paulo',
+                    horizontalMargin: 8,
+                    verticalMargin: 8,
+                    validator: (value) => this._registerController.validateEmptyInput(value),
+                  ),
+
+
+                  SizedBox(
+                    width: constraint.maxWidth - 32,
+                    child: RaisedButton(
+                      child: Text(
+                        'Cadastrar'
                       ),
-                    ],
+                      onPressed: () {
+                        this._registerController.registerActionButton();
+                      }
+                    ),
                   ),
-                ),
 
-                InputText(
-                  this._registerController.complementAddressInputController,
-                  label: 'Complemento',
-                  hint: 'Apto, casa 1, fundos...',
-                  horizontalMargin: 8,
-                  verticalMargin: 8,
-                ),
-
-                InputText(
-                  this._registerController.neighborhoodAddressInputController,
-                  label: 'Bairro',
-                  hint: 'Liberdade',
-                  horizontalMargin: 8,
-                  verticalMargin: 8,
-                ),
-
-                DropdownButton(
-                  value: this._registerController.city,
-                  onChanged: (value) {
-                    this._registerController.city = value;
-                    setState(() {});
-                  },
-                  items: [
-                    DropdownMenuItem(
-                      child: Text('São Paulo'),
-                      value: 'São Paulo',
-                    ),
-                    DropdownMenuItem(
-                      child: Text('Rio de Janeiro'),
-                      value: 'Rio de Janeiro',
-                    ),
-                    DropdownMenuItem(
-                      child: Text('São Caetano'),
-                      value: 'São Caetano',
-                    ),
-                  ],
-                ),
-
-                SizedBox(
-                  width: constraint.maxWidth - 32,
-                  child: RaisedButton(
-                    child: Text(
-                      'Cadastrar'
-                    ),
-                    onPressed: () {
-                      this._registerController.registerButonAction();
-                    }
-                  ),
-                ),
-
-              ],
-            ),
-          );
-        }
+                ],
+              ),
+            );
+          }
+        ),
       ),
       
     );
