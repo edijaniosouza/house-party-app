@@ -26,6 +26,7 @@ class User {
     this._name = name,
     this._dateOfBirth = dateOfBirth,
     this._cpf = cpf,
+    this._userName = userName,
     this._email = email,
     this._password = password,
     this._phone = phone,
