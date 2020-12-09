@@ -40,6 +40,7 @@ class _RegisterUserPageState extends State<RegisterUserPage> {
                     this._registerController.nameInputController,
                     label: 'Nome',
                     hint: 'Informe seu nome',
+                    textCapitalization: TextCapitalization.words,
                     horizontalMargin: 8,
                     verticalMargin: 8,
                     validator: (value) => this._registerController.validateNameInput(value)
@@ -49,6 +50,7 @@ class _RegisterUserPageState extends State<RegisterUserPage> {
                     this._registerController.surnameInputController,
                     label: 'Sobrenome',
                     hint: 'Informe seu sobrenome',
+                    textCapitalization: TextCapitalization.words,
                     horizontalMargin: 8,
                     verticalMargin: 8,
                     validator: (value) => this._registerController.validateSurnameInput(value)
@@ -76,10 +78,10 @@ class _RegisterUserPageState extends State<RegisterUserPage> {
                       onPressed: () async {
                         _registerController.setBirthday(
                           await showDatePicker(
-                          context: context,
-                          initialDate: DateTime.now(),
-                          firstDate: DateTime(1900),
-                          lastDate: DateTime.now()
+                            context: context,
+                            initialDate: DateTime.now(),
+                            firstDate: DateTime(1900),
+                            lastDate: DateTime.now()
                           )
                         );
                         setState(() {});
@@ -148,6 +150,7 @@ class _RegisterUserPageState extends State<RegisterUserPage> {
                           width: constraint.maxWidth * 0.7,
                           child: InputText(
                             this._registerController.streetAddressInputController,
+                            textCapitalization: TextCapitalization.words,
                             label: 'Logradouro',
                             hint: 'Rua Vergueiro',
                             validator: (value) => this._registerController.validateEmptyInput(value),
@@ -171,25 +174,27 @@ class _RegisterUserPageState extends State<RegisterUserPage> {
                   InputText(
                     this._registerController.complementAddressInputController,
                     label: 'Complemento',
+                    textCapitalization: TextCapitalization.words,
                     hint: 'Apto, casa 1, fundos...',
                     horizontalMargin: 8,
                     verticalMargin: 8,
-                    validator: (value) => this._registerController.validateEmptyInput(value),
                   ),
 
                   InputText(
                     this._registerController.neighborhoodAddressInputController,
                     label: 'Bairro',
                     hint: 'Liberdade',
+                    textCapitalization: TextCapitalization.words,
                     horizontalMargin: 8,
                     verticalMargin: 8,
                     validator: (value) => this._registerController.validateEmptyInput(value),
                   ),
 
                   InputText(
-                    this._registerController.neighborhoodAddressInputController,
+                    this._registerController.cityInputController,
                     label: 'Cidade',
                     hint: 'São Paulo',
+                    textCapitalization: TextCapitalization.words,
                     horizontalMargin: 8,
                     verticalMargin: 8,
                     validator: (value) => this._registerController.validateEmptyInput(value),
