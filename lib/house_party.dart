@@ -5,6 +5,7 @@ import 'package:house_party/pages/login/login_page.dart';
 import 'package:house_party/pages/product/product_list_page.dart';
 import 'package:house_party/pages/register_user/register_user_page.dart';
 import 'package:house_party/pages/company/register_company_page.dart';
+import 'package:house_party/theme/app_theme.dart';
 
 class HouseParty extends StatelessWidget {
   // This widget is the root of your application.
@@ -12,6 +13,8 @@ class HouseParty extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
 
+      debugShowCheckedModeBanner: false,
+      theme: AppTheme().defaultTheme,
       title: 'House Party',
       initialRoute: '/',
 
@@ -25,18 +28,6 @@ class HouseParty extends StatelessWidget {
         '/product' : (context) => ProductListPage(),
       },
 
-      theme: ThemeData(
-        primaryColor: Colors.black,
-        scaffoldBackgroundColor: Colors.grey[400],
-        appBarTheme: AppBarTheme(
-          color: Colors.orange[300],
-          centerTitle: true,
-        ),
-        buttonTheme: ButtonThemeData(
-          buttonColor: Colors.orange[300],
-          textTheme: ButtonTextTheme.normal,
-        ),
-      ),
     );
   }
 }

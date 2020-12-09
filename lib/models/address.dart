@@ -1,6 +1,6 @@
 class Address {
   int _id;
-  int _cep;
+  String _cep;
   String _street;
   int _number;
   String _complement;
@@ -10,7 +10,7 @@ class Address {
   Address(
     {
       int id,
-      int cep,
+      String cep,
       String street,
       int number,
       String complement,
@@ -27,12 +27,29 @@ class Address {
     this._city = city
   ;
 
+  Address.fromJson(Map<String, dynamic> json) {
+    this._cep = json['cep'];
+    this._city = json['cidade'];
+    this._street = json['logradouro'];
+    this._neighborhood = json['bairro'];
+  }
+
   int get id => _id;
-  int get cep => _cep;
+  String get cep => _cep;
   String get street => _street;
   int get number => _number;
   String get city => _city;
   String get neighborhood => _neighborhood;
   String get complement => _complement;
+
+  Map<String, dynamic> toMap() {
+    return {
+      'cep' : this._cep,
+      'cidade' : this._city,
+      'logradouro' : this._street,
+      'bairro' : this._neighborhood,
+      'pais' : 'Brasil'
+    };
+  }
 
 }

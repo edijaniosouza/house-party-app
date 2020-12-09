@@ -1,16 +1,65 @@
 import 'package:flutter/material.dart';
+import 'package:house_party/database/dao/user_dao.dart';
+import 'package:house_party/http/webclients/user_webclient.dart';
+import 'package:house_party/models/user.dart';
 
 class LoginController {
   static LoginController _instance = LoginController._();
 
   LoginController._();
   
-  TextEditingController loginTextController;
-  TextEditingController passwordTextController;
+  final TextEditingController loginTextController = TextEditingController();
+  final TextEditingController passwordTextController = TextEditingController();
+  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  UserWebClient _userWebClient = UserWebClient();
 
   static get getInstance => _instance;
+  GlobalKey<FormState> get formKey => this._formKey;
 
-  navigateToCategoryPage(BuildContext context) {
+  void navigateToCategoryPage(BuildContext context) {
     Navigator.pushNamedAndRemoveUntil(context, '/category', (route) => false);
   }
+
+  Future<User> validateAccess(BuildContext context) async {
+    User user;
+    if (loginTextController.text.contains('@')) {
+      user = await _userWebClient.loginWithEmail(loginTextController.text, passwordTextController.text);
+    } else {
+      //TODO: Implementar login com número de telefone
+    }
+    return user;
+  }
+
+  validateUserInput(String value) {
+    if(value.isEmpty || value.length < 3) {
+      return 'É necessário informar uma forma de acesso valida';
+    }
+  }
+
+  validatePasswordInput(String value) {
+    if(value.isEmpty) {
+      return 'Informe sua senha';
+    }
+  }
+
+  void actionEnterButton(BuildContext context) async {
+    if (formKey.currentState.validate()) {
+      User user = await validateAccess(context);
+      if (user != null) {
+        debugPrint(user.toString());
+        UserDAO().save(user);
+
+        navigateToCategoryPage(context);
+      } else {
+        Scaffold.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Usuário ou senha incorreto', textAlign: TextAlign.center),
+            duration: Duration(seconds: 5),
+            backgroundColor: Colors.red,
+          )
+        );
+      }
+    }
+  }
+
 }
