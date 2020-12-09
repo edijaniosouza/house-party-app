@@ -52,7 +52,7 @@ class User {
       'senha' : this._password,
       'cpf' : this._cpf,
       'telefone' : this._phone,
-      'dt_nascimento' : this._dateOfBirth.toString(),
+      'dt_nascimento' : '${dateOfBirth.year}-${dateOfBirth.month.toString().padLeft(2,'0')}-${dateOfBirth.day.toString().padLeft(2,'0')}',
       'endereco' : this._address.toMap(),
     };
   }
