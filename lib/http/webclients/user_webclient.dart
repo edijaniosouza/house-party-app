@@ -6,8 +6,8 @@ import 'package:http/http.dart';
 
 class UserWebClient {
 
-  Future<void> saveUser(User user) async {
-    client.post(
+  Future<User> saveUser(User user) async {
+    Response response = await client.post(
       '$url/cliente/cadastro',
       body: jsonEncode(user.toMap()),
       headers:
@@ -15,7 +15,13 @@ class UserWebClient {
         "Accept": "application/json",
         "content-type": "application/json"
       }
-      ).timeout(Duration(seconds: 30));
+    ).timeout(Duration(seconds: 30));
+    Map<String, dynamic> responseJson = jsonDecode(utf8.decode(response.bodyBytes));
+    if(response.statusCode == 201) {
+      return User.fromJson(responseJson);
+    } else {
+      return null;
+    }
   }
 
   Future<bool> authentic(String userName, String password) async {

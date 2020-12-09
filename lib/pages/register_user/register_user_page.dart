@@ -208,7 +208,7 @@ class _RegisterUserPageState extends State<RegisterUserPage> {
                         'Cadastrar'
                       ),
                       onPressed: () {
-                        this._registerController.registerActionButton();
+                        this._registerController.registerActionButton(context);
                       }
                     ),
                   ),

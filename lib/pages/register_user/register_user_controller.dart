@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:house_party/database/dao/user_dao.dart';
 import 'package:house_party/http/webclients/user_webclient.dart';
 import 'package:house_party/models/address.dart';
 import 'package:house_party/models/user.dart';
@@ -6,8 +7,9 @@ import 'package:house_party/models/user.dart';
 class RegisterUserController {
   
   static RegisterUserController _instance = RegisterUserController._();
+  final UserWebClient _userWebClient = UserWebClient();
+  final UserDAO _userDAO = UserDAO();
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
   TextEditingController _nameInputController = TextEditingController();
   TextEditingController _surnameInputController = TextEditingController();
   TextEditingController _emailInputController = TextEditingController();
@@ -46,6 +48,7 @@ class RegisterUserController {
       password: passwordInputController.text,
       userName: usernameController.text,
       phone: numberPhoneInputController.text,
+      dateOfBirth: birthday,
       address: Address(
         cep: '00000000',
         street: streetAddressInputController.text,
@@ -56,13 +59,19 @@ class RegisterUserController {
     );
   }
 
-  saveUserOnDB(User user) {
-    UserWebClient().saveUser(user);
-  }
-
-  void registerActionButton() {
+  void registerActionButton(BuildContext context) async {
     if (this.formKey.currentState.validate()) {
-      // TODO: Salvar usuário no banco de dados e enviar para API
+      User user = createUser();
+      if(await userWebClient.saveUser(user) == null) {
+        Scaffold.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Nome de usuário ou e-mail já existe'),
+            backgroundColor: Colors.red,
+          )
+        );
+      } else {
+        userDAO.save(user);
+      }
     }
   }
 
@@ -123,6 +132,8 @@ class RegisterUserController {
   }
 
   GlobalKey<FormState> get formKey => _formKey;
+  UserWebClient get userWebClient => _userWebClient;
+  UserDAO get userDAO => _userDAO;
   DateTime get birthday => _birthday;
   TextEditingController get cityInputController => _cityInputController;
   TextEditingController get cpfInputController => _cpfInputController;
