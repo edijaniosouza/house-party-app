@@ -20,9 +20,8 @@ class UserWebClient {
     Map<String, dynamic> responseJson = jsonDecode(utf8.decode(response.bodyBytes));
     if(response.statusCode == 201) {
       return User.fromJson(responseJson);
-    } else {
-      return null;
     }
+    return null;
   }
 
   /// Valida se o usuário e senha informados estão corretos
@@ -30,7 +29,6 @@ class UserWebClient {
     Response response = await client.get(
         '$url/cliente/autenticacao?usuario=$userName&senha=$password'
     ).timeout(Duration(seconds: 30));
-
     return response.statusCode == 202 ? true : false;
   }
 
@@ -45,8 +43,10 @@ class UserWebClient {
   /// Retorna um usuário caso o e-mail e senha estejam corretos
   Future<User> loginWithEmail(String email, String password) async {
     User user = await findByEmail(email);
-    if (await authentic(user.userName, password)) {
-      return user;
+    if (user != null) {
+      if (await authentic(user.userName, password)) {
+        return user;
+      }
     }
     return null;
   }
@@ -56,9 +56,11 @@ class UserWebClient {
     Response response = await client.get(
       '$url/usuario?usuario=$username'
     ).timeout(Duration(seconds: 30));
-
-    Map<String, dynamic> respondeJson = jsonDecode(utf8.decode(response.bodyBytes));
-    return User.fromJson(respondeJson);
+    if (response.statusCode == 200) {
+      Map<String, dynamic> respondeJson = jsonDecode(utf8.decode(response.bodyBytes));
+      return User.fromJson(respondeJson);
+    }
+    return null;
   }
 
   /// Busca um usuário pelo e-mail
@@ -66,7 +68,10 @@ class UserWebClient {
     Response response = await client.get(
       '$url/cliente/email/$email'
     ).timeout(Duration(seconds: 30));
-    Map<String, dynamic> responseJson = jsonDecode(utf8.decode(response.bodyBytes));
-    return User.fromJson(responseJson);
+    if(response.body != 'null') {
+      Map<String, dynamic> responseJson = jsonDecode(utf8.decode(response.bodyBytes));
+      return User.fromJson(responseJson);
+    }
+    return null;
   }
 }
