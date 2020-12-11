@@ -25,7 +25,7 @@ class LoginController {
     if (loginTextController.text.contains('@')) {
       user = await _userWebClient.loginWithEmail(loginTextController.text, passwordTextController.text);
     } else {
-      //TODO: Implementar login com número de telefone
+      user = await _userWebClient.loginWithUserName(loginTextController.text, passwordTextController.text);
     }
     return user;
   }
@@ -48,7 +48,6 @@ class LoginController {
       if (user != null) {
         debugPrint(user.toString());
         UserDAO().save(user);
-
         navigateToCategoryPage(context);
       } else {
         Scaffold.of(context).showSnackBar(

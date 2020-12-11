@@ -37,7 +37,7 @@ class  UserLoginPageState extends State<UserLoginPage> {
                     child: InputText(
                       _loginController.loginTextController,
                       label: 'Usuário',
-                      hint: 'E-mail ou telefone',
+                      hint: 'E-mail ou nome de usuário',
                       validator: (value) => this._loginController.validateUserInput(value),
                     )
                   ),
