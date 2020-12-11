@@ -117,6 +117,8 @@ class RegisterUserController {
       return 'O nome de usuário não pode conter \'@\'';
     } else if(value.length < 3) {
       return 'Nome de usuário inválido';
+    } else if(value.contains(' ')) {
+      return 'Nome de usuário não pode conter espaços';
     }
   }
 
