@@ -7,7 +7,9 @@ import 'package:http/http.dart';
 class UserWebClient {
 
   /// Envia os dados do usuário para serem salvos
-  Future<User> saveUser(User user) async {
+  ///
+  /// Restorno: String com a mensagem enviada pela API
+  Future<String> saveUser(User user) async {
     Response response = await client.post(
       '$url/cliente/cadastro',
       body: jsonEncode(user.toMap()),
@@ -18,10 +20,7 @@ class UserWebClient {
       }
     ).timeout(Duration(seconds: 30));
     Map<String, dynamic> responseJson = jsonDecode(utf8.decode(response.bodyBytes));
-    if(response.statusCode == 201) {
-      return User.fromJson(responseJson);
-    }
-    return null;
+    return responseJson['Resposta'];
   }
 
   /// Valida se o usuário e senha informados estão corretos

@@ -62,16 +62,17 @@ class RegisterUserController {
   void registerActionButton(BuildContext context) async {
     if (this.formKey.currentState.validate()) {
       User user = createUser();
-      if(await userWebClient.saveUser(user) == null) {
-        Scaffold.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Nome de usuário ou e-mail já existe'),
-            backgroundColor: Colors.red,
-          )
-        );
-      } else {
+      String responseBody = await userWebClient.saveUser(user);
+      if (responseBody == 'Salvo com sucesso!') {
         userDAO.save(user);
+        navigateToCategoryPage(context);
       }
+      Scaffold.of(context).showSnackBar(
+        SnackBar(
+          content: Text('$responseBody'),
+          backgroundColor: Colors.red[900],
+        )
+      );
     }
   }
 
