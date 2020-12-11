@@ -6,12 +6,14 @@ import 'package:http/http.dart';
 
 class UserWebClient {
 
+  String userUrl = '$url/cliente';
+
   /// Envia os dados do usuário para serem salvos
   ///
   /// Restorno: String com a mensagem enviada pela API
   Future<String> saveUser(User user) async {
     Response response = await client.post(
-      '$url/cliente/cadastro',
+      '$userUrl/cadastro',
       body: jsonEncode(user.toMap()),
       headers:
       {
@@ -26,12 +28,12 @@ class UserWebClient {
   /// Valida se o usuário e senha informados estão corretos
   Future<bool> authentic(String userName, String password) async {
     Response response = await client.get(
-        '$url/cliente/autenticacao?usuario=$userName&senha=$password'
+        '$userUrl/autenticacao?usuario=$userName&senha=$password'
     ).timeout(Duration(seconds: 30));
     return response.statusCode == 202 ? true : false;
   }
 
-  /// Retorna um usuário caso o nome se usuário e senha estejam corretos
+  /// Retorna um usuário caso o nome de usuário e senha estejam corretos
   Future<User> loginWithUserName(String userName, String password) async {
     if(await authentic(userName, password)) {
       return await findByUserName(userName);
@@ -53,7 +55,7 @@ class UserWebClient {
   /// Busca um usuário pelo nome de usuário
   Future<User> findByUserName(String username) async {
     Response response = await client.get(
-      '$url/usuario?usuario=$username'
+      '$userUrl/usuario/?usuario=$username'
     ).timeout(Duration(seconds: 30));
     if (response.statusCode == 200) {
       Map<String, dynamic> respondeJson = jsonDecode(utf8.decode(response.bodyBytes));
@@ -65,7 +67,7 @@ class UserWebClient {
   /// Busca um usuário pelo e-mail
   Future<User> findByEmail(String email) async {
     Response response = await client.get(
-      '$url/cliente/email/$email'
+      '$userUrl/email/$email'
     ).timeout(Duration(seconds: 30));
     if(response.body != 'null') {
       Map<String, dynamic> responseJson = jsonDecode(utf8.decode(response.bodyBytes));
