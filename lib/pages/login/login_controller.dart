@@ -55,7 +55,7 @@ class LoginController {
           SnackBar(
             content: Text('Usuário ou senha incorreto', textAlign: TextAlign.center),
             duration: Duration(seconds: 5),
-            backgroundColor: Colors.red,
+            backgroundColor: Colors.red[900],
           )
         );
       }
