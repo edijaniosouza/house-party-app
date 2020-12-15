@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:house_party/pages/category/category_page.dart';
 import 'package:house_party/pages/home/home_page.dart';
 import 'package:house_party/pages/login/login_page.dart';
@@ -16,9 +17,8 @@ class HouseParty extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: AppTheme().defaultTheme,
       title: 'House Party',
-      initialRoute: '/',
 
-      // Nomeia rotas
+      initialRoute: '/',
       routes: {
         '/' : (context) => HomePage(),
         '/user/login': (context) => UserLoginPage(),
@@ -28,6 +28,14 @@ class HouseParty extends StatelessWidget {
         '/product' : (context) => ProductListPage(),
       },
 
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate
+      ],
+      supportedLocales: [
+        const Locale('pt', 'BR'),
+      ],
     );
   }
 }
