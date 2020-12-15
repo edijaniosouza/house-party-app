@@ -67,26 +67,27 @@ class  UserLoginPageState extends State<UserLoginPage> {
                     ),
                   ),
 
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8.0),
-                    child: ButtonWithImage(
-                      'Conectar usando o Google',
-                      'assets/images/google-account.png',
-                      () {
-                        _loginController.navigateToCategoryPage(context);
-                      }
-                    )
-                  ),
-
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8.0),
-                    child: ButtonWithImage(
-                      'Conectar usando o Facebook',
-                      'assets/images/facebook-account.png',
-                      () {
-                      }
-                    )
-                  ),
+                  //TODO: Implementar forma de realizar login com Google ou facebook
+                  // Padding(
+                  //   padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  //   child: ButtonWithImage(
+                  //     'Conectar usando o Google',
+                  //     'assets/images/google-account.png',
+                  //     () {
+                  //       _loginController.navigateToCategoryPage(context);
+                  //     }
+                  //   )
+                  // ),
+                  //
+                  // Padding(
+                  //   padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  //   child: ButtonWithImage(
+                  //     'Conectar usando o Facebook',
+                  //     'assets/images/facebook-account.png',
+                  //     () {
+                  //     }
+                  //   )
+                  // ),
 
                 ],
               ),
