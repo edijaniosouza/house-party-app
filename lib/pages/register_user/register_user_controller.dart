@@ -56,18 +56,26 @@ class RegisterUserController {
 
   void registerActionButton(BuildContext context) async {
     if (this.formKey.currentState.validate()) {
+      showDialog(
+          context: context,
+          barrierDismissible: false,
+          child: Center(child: CircularProgressIndicator())
+      );
       User user = createUser();
       String responseBody = await userWebClient.saveUser(user);
       if (responseBody == 'Salvo com sucesso!') {
         userDAO.save(user);
+        Navigator.pop(context);
         navigateToCategoryPage(context);
+      } else {
+        Navigator.pop(context);
+        Scaffold.of(context).showSnackBar(
+          SnackBar(
+            content: Text('$responseBody'),
+            backgroundColor: Colors.red[900],
+          )
+        );
       }
-      Scaffold.of(context).showSnackBar(
-        SnackBar(
-          content: Text('$responseBody'),
-          backgroundColor: Colors.red[900],
-        )
-      );
     }
   }
 
@@ -146,7 +154,6 @@ class RegisterUserController {
   GlobalKey<FormState> get formKey => _formKey;
   UserWebClient get userWebClient => _userWebClient;
   UserDAO get userDAO => _userDAO;
-  DateTime get birthday => _birthday;
   TextEditingController get cityInputController => _cityInputController;
   TextEditingController get cpfInputController => _cpfInputController;
   TextEditingController get numberPhoneInputController => _numberPhoneInputController;

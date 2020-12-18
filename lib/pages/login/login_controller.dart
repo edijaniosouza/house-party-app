@@ -44,12 +44,20 @@ class LoginController {
 
   void actionEnterButton(BuildContext context) async {
     if (formKey.currentState.validate()) {
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        child: Center(child: CircularProgressIndicator())
+      );
+      await Future.delayed(Duration(seconds: 15));
       User user = await validateAccess(context);
       if (user != null) {
         debugPrint(user.toString());
         UserDAO().save(user);
+        Navigator.pop(context);
         navigateToCategoryPage(context);
       } else {
+        Navigator.pop(context);
         Scaffold.of(context).showSnackBar(
           SnackBar(
             content: Text('Usuário ou senha incorreto', textAlign: TextAlign.center),
