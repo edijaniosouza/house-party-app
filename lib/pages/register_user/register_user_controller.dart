@@ -3,6 +3,7 @@ import 'package:house_party/database/dao/user_dao.dart';
 import 'package:house_party/http/webclients/user_webclient.dart';
 import 'package:house_party/models/address.dart';
 import 'package:house_party/models/user.dart';
+import 'package:intl/intl.dart';
 
 class RegisterUserController {
   
@@ -24,15 +25,9 @@ class RegisterUserController {
   TextEditingController _numberPhoneInputController = TextEditingController();
   TextEditingController _cpfInputController = TextEditingController();
   TextEditingController _cityInputController = TextEditingController();
-
-  DateTime _birthday;
+  TextEditingController _dateOfBirthController = TextEditingController();
 
   RegisterUserController._();
-
-  get getBirthday => this._birthday;
-  void setBirthday(DateTime birthday) {
-    this._birthday = birthday;
-  }
 
   static get instance => _instance;
 
@@ -48,7 +43,7 @@ class RegisterUserController {
       password: passwordInputController.text,
       userName: usernameController.text,
       phone: numberPhoneInputController.text,
-      dateOfBirth: birthday,
+      dateOfBirth: DateFormat('dd/MM/y').parse(dateOfBirthController.text),
       address: Address(
         cep: '00000000',
         street: streetAddressInputController.text,
@@ -134,6 +129,20 @@ class RegisterUserController {
     }
   }
 
+  Future<void> selectDateAction(BuildContext context) async {
+    DateTime date = await showDatePicker(
+        context: context,
+        initialDate: DateTime.now(),
+        firstDate: DateTime(1900),
+        lastDate: DateTime.now()
+    );
+    if (date != null) {
+      this.dateOfBirthController.text = DateFormat(
+          'dd/MM/y'
+      ).format(date);
+    }
+  }
+
   GlobalKey<FormState> get formKey => _formKey;
   UserWebClient get userWebClient => _userWebClient;
   UserDAO get userDAO => _userDAO;
@@ -152,4 +161,5 @@ class RegisterUserController {
   TextEditingController get emailInputController => _emailInputController;
   TextEditingController get surnameInputController => _surnameInputController;
   TextEditingController get nameInputController => _nameInputController;
+  TextEditingController get dateOfBirthController => _dateOfBirthController;
 }
