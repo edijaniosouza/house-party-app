@@ -18,33 +18,36 @@ class LateralMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: ListView(
-        children: [
-          DrawerHeader(
-            decoration: BoxDecoration(
-              color: AppTheme.defaultTheme.primaryColor
-            ),
-            child: CircleAvatar(
-              child: Image.asset('assets/images/caneca_baloes-vetor.png'),
-              backgroundColor: AppTheme.defaultTheme.scaffoldBackgroundColor,
-            ),
-          ),
-          Card(
-            elevation: 4,
-            child: ListTile(
-              onTap: () {
-                singOut(context);
-              },
-              leading: FaIcon(FontAwesomeIcons.signOutAlt),
-              title: Text(
-                'Sair',
-                style: TextStyle(
-                  fontSize: 18,
-                ),
+      child: Container(
+        color: AppTheme.defaultTheme.scaffoldBackgroundColor,
+        child: ListView(
+          children: [
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: AppTheme.defaultTheme.primaryColor
+              ),
+              child: CircleAvatar(
+                child: Image.asset('assets/images/caneca_baloes-vetor.png'),
+                backgroundColor: AppTheme.defaultTheme.scaffoldBackgroundColor,
               ),
             ),
-          )
-        ],
+            Card(
+              elevation: 4,
+              child: ListTile(
+                onTap: () {
+                  singOut(context);
+                },
+                leading: FaIcon(FontAwesomeIcons.signOutAlt, size: 25,),
+                title: Text(
+                  'Sair',
+                  style: TextStyle(
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
