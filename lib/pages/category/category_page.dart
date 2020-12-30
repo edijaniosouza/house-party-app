@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:house_party/components/lateral_menu.dart';
 import 'package:house_party/components/outlined_text.dart';
 import 'package:house_party/http/webclients/category_webclient.dart';
 import 'package:house_party/models/category.dart';
@@ -23,6 +24,8 @@ class _CategoryPageState extends State<CategoryPage> {
           fontSize: 22,
         ),
       ),
+
+      drawer: LateralMenu(),
 
       body: FutureBuilder(
         future: this._categoryWebClient.findAll(),

@@ -21,6 +21,7 @@ class UserDAO {
     ')'
   );
 
+  /// Salva o usuário no banco de dados interno do dispositivo
   Future<int> save(User user) async {
     Database db = await createDataBase();
     Map<String, dynamic> userMap = {
@@ -35,9 +36,18 @@ class UserDAO {
     return id;
   }
 
+  /// Consulta todos os usuários salvos no bando de dados do dispositivo
   Future<List<Map<String, dynamic>>> findAll() async {
     Database db = await createDataBase();
     return db.query(tableName);
+  }
+
+  /// Deleta os usuários salvos no banco de dados do dispositivo
+  Future<void> deleteAll() async {
+    print('Deletando usuários da tabela $_tableName');
+    Database db = await createDataBase();
+    int deletedLines = await db.delete(_tableName);
+    print('$deletedLines linha(s) deletada(s)');
   }
 
   static String get tableName => _tableName;

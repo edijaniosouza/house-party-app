@@ -14,7 +14,7 @@ class HouseParty extends StatelessWidget {
     return MaterialApp(
 
       debugShowCheckedModeBanner: false,
-      theme: AppTheme().defaultTheme,
+      theme: AppTheme.defaultTheme,
       title: 'House Party',
 
       initialRoute: '/',

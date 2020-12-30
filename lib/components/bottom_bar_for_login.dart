@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:house_party/pages/home/home_controller.dart';
-import 'package:house_party/components/house_party_icons.dart';
 
 // Constrói uma barra inferior que permite acessar a tela de login ou cadastro
 class BottomBarForLogin extends StatelessWidget {
@@ -23,7 +23,7 @@ class BottomBarForLogin extends StatelessWidget {
               children: [
                 IconButton(
                   tooltip: 'Acessar tela de login',
-                  icon: Icon(HousePartyIcons.sign_in),
+                  icon: FaIcon(FontAwesomeIcons.signInAlt),
                   onPressed: () {
                     _homeController.navigateToLoginPage(context);
                   },
@@ -39,7 +39,7 @@ class BottomBarForLogin extends StatelessWidget {
               children: [
                 IconButton(
                   tooltip: 'Criar uma nova conta',
-                  icon: Icon(HousePartyIcons.pencil),
+                  icon: FaIcon(FontAwesomeIcons.userPlus),
                   onPressed: () {
                     _homeController.navigateToRegisterPage(context);
                   },

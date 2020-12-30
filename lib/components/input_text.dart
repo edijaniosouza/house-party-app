@@ -13,6 +13,7 @@ class InputText extends StatelessWidget {
   final double _verticalMargin;
   final List<TextInputFormatter> _inputFormatter;
   final TextCapitalization _textCapitalization;
+  final void Function() _onPress;
 
   InputText(
     TextEditingController controller,
@@ -26,6 +27,7 @@ class InputText extends StatelessWidget {
       TextInputFormatter mask,
       String Function(String) validator,
       TextCapitalization textCapitalization,
+      void Function() onPress,
     }
   ): this._controller = controller,
   this._label = label,
@@ -36,7 +38,8 @@ class InputText extends StatelessWidget {
   this._verticalMargin = verticalMargin ?? 0,
   this._inputFormatter = mask == null ? null : [mask],
   this._validator = validator,
-  this._textCapitalization = textCapitalization ?? TextCapitalization.none
+  this._textCapitalization = textCapitalization ?? TextCapitalization.none,
+  this._onPress = onPress
   ;
   
   @override
@@ -52,6 +55,7 @@ class InputText extends StatelessWidget {
           color: Colors.white
         ),
         controller: this._controller,
+        onTap: this._onPress,
         validator: this._validator,
         keyboardType: this._keyboardType,
         obscureText: _isHidden,

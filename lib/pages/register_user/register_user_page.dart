@@ -1,5 +1,4 @@
 
-import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 import 'package:house_party/components/input_text.dart';
 import 'package:house_party/components/outlined_text.dart';
@@ -67,23 +66,20 @@ class _RegisterUserPageState extends State<RegisterUserPage> {
                     validator: (value) => this._registerController.validateCpfInput(value),
                   ),
 
-                  SizedBox(
-                    width: constraint.maxWidth - 32,
-                    child: RaisedButton(
-                      child: Text(
-                        this._registerController.getBirthday == null ?
-                        'Data de nascimento' :
-                        formatDate(this._registerController.getBirthday, [dd, '/', mm, '/', yyyy])
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextField(
+                      style: TextStyle(color: Colors.white),
+                      decoration: InputDecoration(
+                        labelText: 'Data de nascimento',
+                        hintText: '25/12/19997',
                       ),
-                      onPressed: () async {
-                        _registerController.setBirthday(
-                          await showDatePicker(
-                            context: context,
-                            initialDate: DateTime.now(),
-                            firstDate: DateTime(1900),
-                            lastDate: DateTime.now()
-                          )
-                        );
+                      controller: this._registerController.dateOfBirthController,
+                      keyboardType: TextInputType.number,
+                      inputFormatters: [MaskTextInputFormatter(mask: '##/##/####')],
+                      readOnly: true,
+                      onTap: () async {
+                        await this._registerController.selectDateAction(context);
                         setState(() {});
                       },
                     ),
